@@ -1,0 +1,135 @@
+.header-bar {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(199, 169, 37, 0.2);
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-bar .left h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #C7A925;
+  margin: 0;
+  line-height: 1;
+}
+
+.header-bar .center {
+  text-align: center;
+  flex: 1;
+  margin: 0 2rem;
+}
+
+.header-bar .center h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #C7A925;
+  margin: 0 0 0.25rem 0;
+  line-height: 1.2;
+}
+
+.header-bar .center .tagline {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  color: #E8DDBE;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.header-bar .right {
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(199, 169, 37, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: #E8DDBE;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.logout-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(199, 169, 37, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+.logout-btn svg {
+  color: #C7A925;
+}
+
+.logout-btn span {
+  color: #E8DDBE;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-bar {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .header-bar .left h1 {
+    font-size: 2rem;
+  }
+  
+  .header-bar .center {
+    margin: 0;
+    order: 2;
+  }
+  
+  .header-bar .center h2 {
+    font-size: 1.25rem;
+  }
+  
+  .header-bar .right {
+    order: 3;
+  }
+
+  .logout-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-bar {
+    padding: 0.75rem;
+  }
+  
+  .header-bar .left h1 {
+    font-size: 1.75rem;
+  }
+  
+  .header-bar .center h2 {
+    font-size: 1.1rem;
+  }
+  
+  .logout-btn {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+} 
