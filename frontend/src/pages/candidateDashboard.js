@@ -16,26 +16,28 @@ function Dashboard() {
   }
 
   return (
-    <div className='dashboard-container'>
-      <HeaderBar user={user} />
-      <div className='dashboard-content'>
-        <div className='dashboard-main-grid'>
-          <div className='dashboard-left-side'>
-            <CurrentProblemCard />
-            <div className='horizontal-divider'></div>
-            <ProblemBankCard />
-          </div>
-          
-          <div className='dashboard-divider'></div>
-          
-          <div className='dashboard-right-side'>
-            <div className='dashboard-right-top'>
-              <QuickActionsCard />
-              <div className='vertical-divider-small'></div>
-              <LeaderboardCard currentUser={user} />
+    <div className='candidate-page'>
+      <div className='candidate-dashboard-container'>
+        <HeaderBar user={user} />
+        <div className='candidate-dashboard-content'>
+          <div className='candidate-dashboard-main-grid'>
+            <div className='candidate-dashboard-left-side'>
+              <CurrentProblemCard />
+              <div className='candidate-horizontal-divider'></div>
+              <ProblemBankCard />
             </div>
-            <div className='horizontal-divider'></div>
-            <RecentSubmissionsCard candidateId={user?.id} />
+            
+            <div className='candidate-dashboard-divider'></div>
+            
+            <div className='candidate-dashboard-right-side'>
+              <div className='candidate-dashboard-right-top'>
+                <QuickActionsCard />
+                <div className='candidate-vertical-divider-small'></div>
+                <LeaderboardCard currentUser={user} />
+              </div>
+              <div className='candidate-horizontal-divider'></div>
+              <RecentSubmissionsCard candidateId={user?.id} />
+            </div>
           </div>
         </div>
       </div>

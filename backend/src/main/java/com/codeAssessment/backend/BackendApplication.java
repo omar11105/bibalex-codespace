@@ -20,7 +20,7 @@ public class BackendApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		// Initialize sample problems if none exist
+		// Initialize sample problems if database is empty
 		if (problemRepository.count() == 0) {
 			Problem problem1 = new Problem();
 			problem1.setTitle("Reverse String");
@@ -45,8 +45,6 @@ public class BackendApplication implements CommandLineRunner {
 			problem3.setSample_input("[3,9,20,null,null,15,7]");
 			problem3.setSample_output("[[3],[20,9],[15,7]]");
 			problemRepository.save(problem3);
-
-			        // Sample problems initialized successfully
 		}
 	}
 }

@@ -53,38 +53,40 @@ function Home() {
   }, []);
 
   return (
-    <div 
-      ref={containerRef}
-      className="home-container"
-      style={{
-        backgroundImage: `url(${heroImage})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-      }}
-      >
-      <div className="particles">
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
-        <div className="particle"></div>
+    <div className="home-page">
+      <div 
+        ref={containerRef}
+        className="home-container"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed',
+        }}
+        >
+        <div className="home-particles">
+          <div className="home-particle"></div>
+          <div className="home-particle"></div>
+          <div className="home-particle"></div>
+          <div className="home-particle"></div>
+          <div className="home-particle"></div>
+          <div className="home-particle"></div>
+          <div className="home-particle"></div>
+          <div className="home-particle"></div>
+          <div className="home-particle"></div>
+          <div className="home-particle"></div>
+        </div>
+        <header className='home-header z-foreground'>
+          <p className='home-tagline'>BUILT FOR RECRUITERS AND CANDIDATES ALIKE</p>
+          <h1>Bibliotheca <br /> Alexandrina <br /> Coding Assessment</h1>
+        </header>
+        <div className='home-assessment-card'>
+          <p>A dedicated platform for evaluating IT candidates through real-time coding challenges.</p>
+          <button onClick={handleStartAssessment}>Start Your Assessment</button>
+          <p className='home-sample-link' onClick={handleViewProblems}>→ Preview a sample challenge</p>
+        </div>
+        <NavBar />
       </div>
-      <header className='home-header z-foreground'>
-        <p className='tagline'>BUILT FOR RECRUITERS AND CANDIDATES ALIKE</p>
-        <h1>Bibliotheca <br /> Alexandrina <br /> Coding Assessment</h1>
-      </header>
-      <div className='assessment-card'>
-        <p>A dedicated platform for evaluating IT candidates through real-time coding challenges.</p>
-        <button onClick={handleStartAssessment}>Start Your Assessment</button>
-        <p className='sample-link' onClick={handleViewProblems}>→ Preview a sample challenge</p>
-      </div>
-      <NavBar />
     </div>
   );
 }

@@ -15,11 +15,10 @@ import com.codeAssessment.backend.repository.SubmissionRepository;
 @RestController
 @RequestMapping("/api")
 public class LeaderboardController {
-    // This controller handles the leaderboard functionality
+
     @Autowired
     private SubmissionRepository submissionRepository;
 
-    // Endpoint to get the leaderboard, accessible by both ADMIN and CANDIDATE roles
     @GetMapping("/leaderboard")
     @PreAuthorize("hasAnyRole('ADMIN', 'CANDIDATE')")
     public ResponseEntity<List<LeaderboardDTO>> getLeaderboard() {

@@ -43,65 +43,67 @@ function Register() {
   };
 
   return (
-    <div className="register-container">
-      <NavBar />
-      <div className="logo-bar">
-        <h1>BA</h1>
-        <p> Built for recruiters and candidates alike</p>
-      </div>
-      <div className="register-panel">
-        <div className="register-tagline">
-          <p>Create your account and showcase your coding skills.</p>
+    <div className="register-page">
+      <div className="register-container">
+        <NavBar />
+        <div className="register-logo-bar">
+          <h1>BA</h1>
+          <p> Built for recruiters and candidates alike</p>
         </div>
-        <div className="vertical-divider"></div>
-
-        <form onSubmit={handleRegister} className="register-form">
-          <h2>Get Started</h2>
-          {error && <p className="error-message">{error}</p>}
-          <input 
-            type="text"
-            placeholder='Username'
-            value={username}
-            required
-            onChange={(e) => setUsername(e.target.value)} 
-          />
-          <input 
-            type="email"
-            placeholder='Email'
-            value={email}
-            required
-            onChange={(e) => setEmail(e.target.value)} 
-          />
-          <input 
-            type="password"
-            placeholder='Password'
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input 
-            type="password"
-            placeholder='Confirm Password'
-            value={confirmPassword}
-            required
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <select 
-            value={role} 
-            onChange={(e) => setRole(e.target.value)}
-            required
-          >
-            <option value="CANDIDATE">Candidate</option>
-            <option value="ADMIN">Admin</option>
-          </select>
-          <button type="submit">Register</button>
-          <div className="divider-row">
-            <div className="divider-line"></div>
-            <div className="divider-text">or</div>
-            <div className="divider-line"></div>
+        <div className="register-panel">
+          <div className="register-tagline">
+            <p>Create your account and showcase your coding skills.</p>
           </div>
-          <p>Already have an account? <a href="/login">Login here</a>.</p>
-        </form>
+          <div className="register-vertical-divider"></div>
+
+          <form onSubmit={handleRegister} className="register-form">
+            <h2>Get Started</h2>
+            {error && <p className="register-error-message">{error}</p>}
+            <input 
+              type="text"
+              placeholder='Username'
+              value={username}
+              required
+              onChange={(e) => setUsername(e.target.value)} 
+            />
+            <input 
+              type="email"
+              placeholder='Email'
+              value={email}
+              required
+              onChange={(e) => setEmail(e.target.value)} 
+            />
+            <input 
+              type="password"
+              placeholder='Password'
+              value={password}
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input 
+              type="password"
+              placeholder='Confirm Password'
+              value={confirmPassword}
+              required
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <select 
+              value={role} 
+              onChange={(e) => setRole(e.target.value)}
+              required
+            >
+              <option value="CANDIDATE">Candidate</option>
+              <option value="ADMIN">Admin</option>
+            </select>
+            <button type="submit">Register</button>
+            <div className="register-divider-row">
+              <div className="register-divider-line"></div>
+              <div className="register-divider-text">or</div>
+              <div className="register-divider-line"></div>
+            </div>
+            <p>Already have an account? <a href="/login">Login here</a>.</p>
+          </form>
+        </div>
       </div>
     </div>
   );

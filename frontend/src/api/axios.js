@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// This file sets up the axios instance for API calls
+// Axios instance configuration for API calls
 const instance = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
   headers: {
@@ -8,7 +8,7 @@ const instance = axios.create({
   },
 });
 
-// Interceptors to handle token and error responses
+// Request interceptor to add authentication token
 instance.interceptors.request.use(
   config => {
     const token = localStorage.getItem('token');
@@ -20,6 +20,7 @@ instance.interceptors.request.use(
   error => Promise.reject(error)
 );
 
+// Response interceptor to handle authentication errors
 instance.interceptors.response.use(
   response => response,
   error => {

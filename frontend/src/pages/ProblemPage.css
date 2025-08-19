@@ -7,13 +7,12 @@
   overflow-y: auto;
 }
 
-html, body {
+.problem-page {
   margin: 0;
   padding: 0;
   height: 100%;
   overflow: auto;
 }
-
 
 /* Header */
 .problem-header {
@@ -210,7 +209,7 @@ html, body {
   margin: 0;
 }
 /* Buttons */
-.restart-btn, .exit-btn, .run-btn, .submit-btn {
+.problem-restart-btn, .problem-exit-btn, .problem-run-btn, .problem-submit-btn {
   font-family: 'Inter', sans-serif;
   font-size: 0.98rem;
   font-weight: 600;
@@ -221,19 +220,19 @@ html, body {
   transition: background 0.2s, color 0.2s;
   box-shadow: none;
 }
-.restart-btn, .run-btn {
+.problem-restart-btn, .problem-run-btn {
   background: #558957;
   color: #E8DDBE;
 }
-.restart-btn:hover, .run-btn:hover {
+.problem-restart-btn:hover, .problem-run-btn:hover {
   background: #476f48;
 }
-.exit-btn, .submit-btn {
+.problem-exit-btn, .problem-submit-btn {
   background: #C7A925;
   color: #23232a;
   margin-left: 8px;
 }
-.exit-btn:hover, .submit-btn:hover {
+.problem-exit-btn:hover, .problem-submit-btn:hover {
   background: #b89c1d;
 }
 
@@ -303,7 +302,7 @@ html, body {
   appearance: none;
   cursor: pointer;
 }
-.run-btn, .submit-btn {
+.problem-run-btn, .problem-submit-btn {
   font-family: 'Inter', sans-serif;
   font-size: 1.08rem;
   font-weight: 600;
@@ -314,21 +313,21 @@ html, body {
   transition: background 0.2s, color 0.2s;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
 }
-.run-btn {
+.problem-run-btn {
   background: #558957;
   color: #E8DDBE;
 }
-.run-btn:hover {
+.problem-run-btn:hover {
   background: #476f48;
 }
-.submit-btn {
+.problem-submit-btn {
   background: #C7A925;
   color: #23232a;
 }
-.submit-btn:hover {
+.problem-submit-btn:hover {
   background: #b89c1d;
 }
-.submit-btn {
+.problem-submit-btn {
   color: #E8DDBE !important;
 }
 

@@ -12,12 +12,8 @@
   --button-hover: #476f48;
 }
 
-/* Reset */
-* {
-  box-sizing: border-box;
-}
-
-html, body {
+/* Home-specific styles only - no global resets */
+.home-page {
   margin: 0;
   padding: 0;
   max-width: 100vw;
@@ -74,7 +70,7 @@ html, body {
   position: relative;
 }
 
-.tagline {
+.home-tagline {
   margin-bottom: 2rem;
   color: var(--text-light);
   font-size: clamp(12px, 2vw, 14px);
@@ -86,7 +82,7 @@ html, body {
 }
 
 /* Assessment Card */
-.assessment-card {
+.home-assessment-card {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -105,18 +101,18 @@ html, body {
   z-index: 1;
 }
 
-.assessment-card:hover {
+.home-assessment-card:hover {
   transform: translateZ(12px) scale(1.01);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
-.assessment-card p {
+.home-assessment-card p {
   font-size: clamp(1rem, 3vw, 24px);
   line-height: 1.4;
   margin: 0;
 }
 
-.assessment-card button {
+.home-assessment-card button {
   padding: clamp(1rem, 3vw, 1.875rem) clamp(1.5rem, 4vw, 1.9375rem);
   border-radius: 25px;
   background: var(--button-bg);
@@ -129,11 +125,11 @@ html, body {
   white-space: nowrap;
 }
 
-.assessment-card button:hover {
+.home-assessment-card button:hover {
   background-color: var(--button-hover);
 }
 
-.sample-link {
+.home-sample-link {
   font-size: clamp(0.875rem, 2vw, 16px);
   text-decoration: none;
   margin-top: 1rem;
@@ -143,7 +139,7 @@ html, body {
   cursor: pointer;
 }
 
-.sample-link:hover {
+.home-sample-link:hover {
   opacity: 0.7;
 }
 
@@ -152,28 +148,28 @@ html, body {
   transform: translateZ(20px) translateY(var(--mouse-y, 0px));
 }
 
-.home-container.parallax .assessment-card {
+.home-container.parallax .home-assessment-card {
   transform: translateZ(10px) translateY(calc(var(--mouse-y, 0px) * 0.5));
 }
 
 /* Particles */
-.particles {
+.home-particles {
   position: absolute;
   inset: 0;
   overflow: hidden;
   z-index: 0;
 }
 
-.particle {
+.home-particle {
   position: absolute;
   width: 2px;
   height: 2px;
   background: rgba(199, 169, 37, 0.6);
   border-radius: 50%;
-  animation: float 6s ease-in-out infinite;
+  animation: homeFloat 6s ease-in-out infinite;
 }
 
-@keyframes float {
+@keyframes homeFloat {
   0%, 100% {
     transform: translateY(100vh) scale(0);
     opacity: 0;
@@ -187,21 +183,21 @@ html, body {
   }
 }
 
-.particle:nth-child(n) {
+.home-particle:nth-child(n) {
   animation-delay: calc(1s * var(--n));
   animation-duration: calc(6s + var(--n) * 1s);
 }
 
-.particle:nth-child(1) { left: 10%; --n: 0; }
-.particle:nth-child(2) { left: 20%; --n: 1; }
-.particle:nth-child(3) { left: 30%; --n: 2; }
-.particle:nth-child(4) { left: 40%; --n: 3; }
-.particle:nth-child(5) { left: 50%; --n: 4; }
-.particle:nth-child(6) { left: 60%; --n: 5; }
-.particle:nth-child(7) { left: 70%; --n: 6; }
-.particle:nth-child(8) { left: 80%; --n: 7; }
-.particle:nth-child(9) { left: 90%; --n: 8; }
-.particle:nth-child(10) { left: 95%; --n: 9; }
+.home-particle:nth-child(1) { left: 10%; --n: 0; }
+.home-particle:nth-child(2) { left: 20%; --n: 1; }
+.home-particle:nth-child(3) { left: 30%; --n: 2; }
+.home-particle:nth-child(4) { left: 40%; --n: 3; }
+.home-particle:nth-child(5) { left: 50%; --n: 4; }
+.home-particle:nth-child(6) { left: 60%; --n: 5; }
+.home-particle:nth-child(7) { left: 70%; --n: 6; }
+.home-particle:nth-child(8) { left: 80%; --n: 7; }
+.home-particle:nth-child(9) { left: 90%; --n: 8; }
+.home-particle:nth-child(10) { left: 95%; --n: 9; }
 
 /* Animations */
 @keyframes fadeSlide {
@@ -221,7 +217,7 @@ html, body {
     padding: clamp(1.5rem, 4vw, 3rem);
   }
 
-  .assessment-card {
+  .home-assessment-card {
     max-width: 100%;
   }
 }
@@ -237,22 +233,22 @@ html, body {
     font-size: clamp(1.5rem, 8vw, 32px);
   }
 
-  .tagline {
+  .home-tagline {
     margin-bottom: 1.5rem;
     text-align: center;
   }
 
-  .assessment-card {
+  .home-assessment-card {
     align-items: center;
     text-align: center;
     padding: 1.5rem;
   }
 
-  .assessment-card p {
+  .home-assessment-card p {
     text-align: center;
   }
 
-  .assessment-card button {
+  .home-assessment-card button {
     width: 100%;
     max-width: 300px;
   }
@@ -263,12 +259,12 @@ html, body {
     padding: 0.75rem;
   }
 
-  .assessment-card {
+  .home-assessment-card {
     padding: 1rem;
     border-radius: 20px;
   }
 
-  .assessment-card button {
+  .home-assessment-card button {
     padding: 0.75rem 1rem;
     font-size: 1rem;
   }

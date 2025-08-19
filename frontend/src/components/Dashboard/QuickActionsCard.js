@@ -16,7 +16,7 @@ function QuickActionsCard() {
   };
 
   const handleStartAssessment = () => {
-    // Navigate to assessment
+    // Navigate to assessment entry page
     navigate('/assessment');
   };
 
@@ -34,7 +34,7 @@ function QuickActionsCard() {
           className="quick-action-button"
           onClick={handleStartPracticeMode}
         >
-          Start Practice Mode
+          Start Practice
         </button>
         <button 
           className="quick-action-button"

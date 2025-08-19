@@ -22,11 +22,10 @@ import com.codeAssessment.backend.service.SubmissionService;
 @RequestMapping("/api/candidate")
 @PreAuthorize("hasRole('CANDIDATE')")
 public class SubmissionController {
-    // This controller handles candidate-specific endpoints for managing submissions
+
     @Autowired
     private SubmissionService submissionService;
 
-    // Endpoint for candidates to submit code, accessible only by CANDIDATE role
     @PostMapping("/submissions")
     public ResponseEntity<Object> createSubmission(@RequestBody SubmissionDTO submissionDTO, Principal principal) {
         try {
@@ -40,7 +39,6 @@ public class SubmissionController {
         }
     }
 
-    // Endpoint for candidates to view their submissions
     @GetMapping("/submissions")
     public ResponseEntity<List<Submission>> getSubmissions(Principal principal) {
         try {
@@ -52,7 +50,6 @@ public class SubmissionController {
         }
     }
 
-    // Endpoint to get submissions by candidate ID, with optional limit
     @GetMapping("/{candidateId}/submissions")
     public ResponseEntity<List<Submission>> getSubmissionsByCandidateId(
             @PathVariable Long candidateId,

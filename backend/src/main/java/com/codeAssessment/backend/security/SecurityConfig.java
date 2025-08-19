@@ -18,20 +18,18 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableWebSecurity
 @EnableMethodSecurity
 public class SecurityConfig {
-    // This class configures security settings for the application, including CORS and JWT authentication
 
-    // Autowired JwtRequestFilter to handle JWT token validation
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
 
     /**
-     * This method configures the security filter chain for the application.
-     * It sets up CORS, disables CSRF protection, and configures authorization rules.
+     * Configures the security filter chain with CORS, CSRF settings, and authorization rules.
+     * Sets up JWT authentication and role-based access control.
      */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Disable CSRF protection for simplicity
+            .csrf(csrf -> csrf.disable()) // Disable CSRF for API endpoints
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
@@ -45,9 +43,8 @@ public class SecurityConfig {
     }
 
     /**
-     * This method configures CORS settings for the application.
-     * It allows requests from specific origins and methods.
-     * @return CorsConfigurationSource with the defined CORS settings.
+     * Configures CORS settings to allow frontend requests.
+     * Enables cross-origin requests from the React development server.
      */
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

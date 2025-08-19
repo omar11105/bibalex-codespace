@@ -29,6 +29,7 @@ public class UserService {
     public User registerUser(User user) {
         // Encrypt the password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setVerified(false); 
         return userRepository.save(user);
     }
 
@@ -45,5 +46,33 @@ public class UserService {
             return user;
         }
         return Optional.empty();
+    }
+    
+    /**
+     * Saves an existing user to the database without re-encrypting the password.
+     * @param user The User entity to be saved.
+     * @return The saved User entity.
+     */
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
+    
+    /**
+     * Finds a user by email address.
+     * @param email The email to search for.
+     * @return An Optional containing the User if found, or empty if not.
+     */
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+    
+    /**
+     * Checks if a user is verified by email.
+     * @param email The email to check.
+     * @return true if the user is verified, false otherwise.
+     */
+    public boolean isUserVerified(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return user.map(User::isVerified).orElse(false);
     }
 }

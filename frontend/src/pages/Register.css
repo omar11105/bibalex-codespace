@@ -1,11 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
 
-* {
-  box-sizing: border-box;
-}
-
-html, body {
+/* Register-specific styles only - no global resets */
+.register-page {
   margin: 0;
   padding: 0;
   max-width: 100vw;
@@ -29,7 +26,7 @@ html, body {
 }
 
 /* Logo Bar */
-.logo-bar {
+.register-logo-bar {
   position: absolute;
   top: clamp(0.5rem, 2vw, 1rem);
   left: clamp(1rem, 4vw, 2rem);
@@ -41,7 +38,7 @@ html, body {
   flex-wrap: wrap;
 }
 
-.logo-bar h1 {
+.register-logo-bar h1 {
   font-size: clamp(2rem, 8vw, 60px);
   font-family: 'Playfair Display', serif;
   color: #C7A925;
@@ -49,7 +46,7 @@ html, body {
   line-height: 1;
 }
 
-.logo-bar p {
+.register-logo-bar p {
   font-size: clamp(10px, 2vw, 14px);
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -81,18 +78,18 @@ html, body {
   text-align: center;
   line-height: 1.3;
   margin: 0 80px;
-  animation: fadeInLeft 1s ease-out;
+  animation: registerFadeInLeft 1s ease-out;
 }
 
 /* Divider */
-.vertical-divider {
+.register-vertical-divider {
   width: 6px;
   height: 658px;
   background: linear-gradient(180deg, #C7A925 0%, #C7A925 100%);
   box-shadow: 0 0 32px rgba(199, 169, 37, 0.7), 0 0 12px #C7A925;
   border-radius: 8px;
   flex-shrink: 0;
-  animation: fadeInUp 1.2s ease-out 0.3s both;
+  animation: registerFadeInUp 1.2s ease-out 0.3s both;
 }
 
 /* Form */
@@ -108,7 +105,7 @@ html, body {
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  animation: fadeInRight 1s ease-out 0.6s both;
+  animation: registerFadeInRight 1s ease-out 0.6s both;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -124,7 +121,7 @@ html, body {
   margin: 0 0 12px;
   text-align: center;
   line-height: 1.2;
-  animation: fadeInDown 0.8s ease-out 0.9s both;
+  animation: registerFadeInDown 0.8s ease-out 0.9s both;
 }
 
 .register-form input,
@@ -138,7 +135,7 @@ html, body {
   font-size: 1rem;
   font-family: 'Inter', sans-serif;
   transition: all 0.3s ease;
-  animation: fadeInUp 0.6s ease-out 1.2s both;
+  animation: registerFadeInUp 0.6s ease-out 1.2s both;
 }
 
 .register-form input:focus,
@@ -176,7 +173,7 @@ html, body {
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Inter', sans-serif;
-  animation: fadeInUp 0.6s ease-out 1.7s both;
+  animation: registerFadeInUp 0.6s ease-out 1.7s both;
   position: relative;
   overflow: hidden;
 }
@@ -209,35 +206,35 @@ html, body {
   height: 300px;
 }
 
-.error-message {
+.register-error-message {
   color: #FF6B6B;
   font-size: 0.9rem;
   text-align: center;
   margin-top: -4px;
   margin-bottom: 0;
-  animation: shake 0.5s ease-in-out;
+  animation: registerShake 0.5s ease-in-out;
 }
 
-.divider-row {
+.register-divider-row {
   width: 100%;
   display: flex;
   align-items: center;
   gap: 12px;
   margin: 16px 0;
-  animation: fadeIn 0.8s ease-out 1.8s both;
+  animation: registerFadeIn 0.8s ease-out 1.8s both;
 }
 
-.divider-line {
+.register-divider-line {
   flex: 1;
   height: 1px;
   background-color: rgba(232, 221, 190, 0.2);
 }
 
-.divider-line:hover {
+.register-divider-line:hover {
   background-color: rgba(232, 221, 190, 0.4);
 }
 
-.divider-text {
+.register-divider-text {
   font-size: 1rem;
   color: #E8DDBE;
 }
@@ -248,7 +245,7 @@ html, body {
   margin: 0;
   text-align: center;
   line-height: 1.4;
-  animation: fadeIn 0.8s ease-out 1.9s both;
+  animation: registerFadeIn 0.8s ease-out 1.9s both;
 }
 
 .register-form a {
@@ -272,7 +269,7 @@ html, body {
     padding-top: clamp(4rem, 15vw, 6rem);
   }
 
-  .vertical-divider {
+  .register-vertical-divider {
     display: none;
   }
 
@@ -288,7 +285,7 @@ html, body {
     padding: clamp(1.5rem, 5vw, 2rem);
   }
 
-  .logo-bar {
+  .register-logo-bar {
     position: relative;
     flex-direction: column;
     align-items: flex-start;
@@ -298,32 +295,32 @@ html, body {
 }
 
 /* Animations */
-@keyframes fadeInLeft {
+@keyframes registerFadeInLeft {
   from { opacity: 0; transform: translateX(-30px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes fadeInRight {
+@keyframes registerFadeInRight {
   from { opacity: 0; transform: translateX(30px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
-@keyframes fadeInUp {
+@keyframes registerFadeInUp {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeInDown {
+@keyframes registerFadeInDown {
   from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
+@keyframes registerFadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-@keyframes shake {
+@keyframes registerShake {
   0%, 100% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }

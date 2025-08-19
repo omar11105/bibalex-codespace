@@ -25,15 +25,12 @@ import com.codeAssessment.backend.service.SubmissionService;
 @RestController
 @RequestMapping("/api")
 public class ProblemController {
-    // This controller handles problem management and candidate-specific endpoints
 
-    // Autowired services for problem management and submission handling
     @Autowired
     private ProblemService problemService;
     @Autowired
     private SubmissionService submissionService;
 
-    // Admin endpoints
     @PostMapping("/admin/problems")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Problem> createProblem(@RequestBody ProblemDTO problemDTO) {
@@ -45,7 +42,6 @@ public class ProblemController {
         }
     }
 
-    // Admin endpoints for managing problems
     @GetMapping("/admin/problems")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Problem>> getProblems(@RequestParam(required = false) Problem.Difficulty difficulty) {
@@ -86,7 +82,6 @@ public class ProblemController {
         }
     }
 
-    // Public endpoints for candidates
     @GetMapping("/problems")
     @PreAuthorize("hasAnyRole('ADMIN', 'CANDIDATE')")
     public ResponseEntity<List<Problem>> getAllProblems() {
@@ -98,7 +93,6 @@ public class ProblemController {
         }
     }
 
-    // Endpoint to get a specific problem by ID, accessible by both ADMIN and CANDIDATE roles
     @GetMapping("/problems/{id}")
     @PreAuthorize("hasAnyRole('ADMIN', 'CANDIDATE')")
     public ResponseEntity<Problem> getProblemById(@PathVariable Long id) {
@@ -110,24 +104,23 @@ public class ProblemController {
         }
     }
 
-    // Candidate-specific endpoints
     @GetMapping("/candidate/current-problem")
     @PreAuthorize("hasRole('CANDIDATE')")
     public ResponseEntity<Problem> getCurrentProblem(Principal principal) {
         try {
             String candidateEmail = principal.getName();
             
-            // Get the user's recent submissions
+            // Retrieve candidate's recent submissions to determine current problem
             List<Submission> submissions = submissionService.getSubmissionsByCandidate(candidateEmail);
             
             if (!submissions.isEmpty()) {
-                // Get the most recent submission's problem
+                // Return the problem from the most recent submission
                 Submission latestSubmission = submissions.get(0);
                 Problem currentProblem = latestSubmission.getProblem();
                 return ResponseEntity.ok(currentProblem);
             }
             
-            // If no submissions, return the first available problem
+            // If no submissions exist, return the first available problem
             List<Problem> problems = problemService.getAllProblems();
             if (!problems.isEmpty()) {
                 return ResponseEntity.ok(problems.get(0));

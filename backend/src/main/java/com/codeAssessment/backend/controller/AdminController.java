@@ -16,14 +16,13 @@ import com.codeAssessment.backend.service.SubmissionService;
 @RequestMapping("/api/admin")
 @PreAuthorize("hasRole('ADMIN')")
 public class AdminController {
-    // This controller handles admin-specific endpoints for managing submissions
+
     @Autowired
     private SubmissionService submissionService;
 
-    // Endpoint to retrieve all submissions, optionally filtered by problem ID or email
     @GetMapping("/submissions")
     public List<Submission> getAllSubmissions(@RequestParam(required = false) Long problemId,
                                               @RequestParam(required = false) String email) {
         return submissionService.getFilteredSubmissions(problemId, email);
-                                              }
+    }
 }

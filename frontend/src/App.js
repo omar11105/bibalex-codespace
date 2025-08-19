@@ -10,6 +10,13 @@ import AdminDashboard from './pages/adminDashboard';
 import AddProblem from './pages/AddProblem';
 import ViewAllProblems from './pages/ViewAllProblems';
 import EditProblems from './pages/EditProblems';
+import ViewAssessments from './pages/ViewAssessments';
+import AssessmentEntry from './pages/AssessmentEntry';
+import AssessmentSolving from './pages/AssessmentSolving';
+import PracticeMode from './pages/PracticeMode';
+import EmailVerification from './pages/EmailVerification';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
 import './App.css';
 
 window.onunhandledrejection = function (e) {
@@ -20,10 +27,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Define routes for the application */}
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
+        <Route path='/verify' element={<EmailVerification />} />
+        <Route path='/forgot-password' element={<ForgotPassword />} />
+        <Route path='/reset-password' element={<ResetPassword />} />
         <Route 
           path='/candidateDashboard' 
           element={
@@ -69,6 +78,38 @@ function App() {
           element={
             <ProtectedRoute requireAdmin={true}>
               <EditProblems />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/view-assessments' 
+          element={
+            <ProtectedRoute requireAdmin={true}>
+              <ViewAssessments />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/assessment' 
+          element={
+            <ProtectedRoute>
+              <AssessmentEntry />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/assessment-solving' 
+          element={
+            <ProtectedRoute>
+              <AssessmentSolving />
+            </ProtectedRoute>
+          }
+        />
+        <Route 
+          path='/practice' 
+          element={
+            <ProtectedRoute>
+              <PracticeMode />
             </ProtectedRoute>
           }
         />

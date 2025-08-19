@@ -15,14 +15,13 @@ import lombok.Data;
 
 @Service
 public class PistonService {
-    // This service handles code execution using the Piston API
     private final String pistonUrl = "https://emkc.org/api/v2/piston/execute";
     private final RestTemplate restTemplate = new RestTemplate();
 
     /**
-     * This method returns the file extension based on the programming language.
-     * @param language The programming language for which the file extension is needed.
-     * @return The file extension as a string.
+     * Returns the file extension for the specified programming language.
+     * @param language The programming language
+     * @return The file extension as a string
      */
     private String getFileExtension(String language) {
         return switch (language) {
@@ -34,9 +33,9 @@ public class PistonService {
     }
 
     /**
-     * This method returns the version of the programming language to be used in the Piston API request.
-     * @param language The programming language for which the version is needed.
-     * @return The version string for the specified language.
+     * Returns the version string for the specified programming language.
+     * @param language The programming language
+     * @return The version string for the specified language
      */
     private String getVersionForLanguage(String language) {
         return switch (language) {
@@ -48,13 +47,13 @@ public class PistonService {
     }
 
     /**
-     * This method executes code using the Piston API.
-     * It preprocesses the code to handle function calls and input,
+     * Executes code using the Piston API.
+     * Preprocesses the code to handle function calls and input,
      * then sends a request to the Piston service.
-     * @param code The code to be executed.
-     * @param language The programming language of the code.
-     * @param input The input to be passed to the code.
-     * @return The output of the executed code.
+     * @param code The code to be executed
+     * @param language The programming language of the code
+     * @param input The input to be passed to the code
+     * @return The output of the executed code
      */
     public String executeCode(String code, String language, String input) {
         // Preprocess the code to handle function calls
@@ -108,22 +107,17 @@ public class PistonService {
             return output.trim();
 
         } catch (Exception e) {
-            // Piston execution error occurred
-            if(response != null) {
-                // Piston response logged
-            }
-            
             throw new RuntimeException("Error executing code: " + e.getMessage());
         }
     }
 
     /**
-     * This method preprocesses the code to handle function calls and input.
-     * It modifies the code based on the programming language to ensure it runs correctly with the provided input.
-     * @param code The original code to be executed.
-     * @param language The programming language of the code.
-     * @param input The input to be passed to the code.
-     * @return The preprocessed code ready for execution.
+     * Preprocesses the code to handle function calls and input.
+     * Modifies the code based on the programming language to ensure it runs correctly with the provided input.
+     * @param code The original code to be executed
+     * @param language The programming language of the code
+     * @param input The input to be passed to the code
+     * @return The preprocessed code ready for execution
      */
     private String preprocessCode(String code, String language, String input) {
         if (input == null || input.trim().isEmpty()) {
@@ -145,11 +139,11 @@ public class PistonService {
     }
 
     /**
-     * This method preprocesses Python code to ensure it can handle input correctly.
-     * It checks for function definitions and adds a print statement to call the function with the input.
-     * @param code The original Python code.
-     * @param input The input to be passed to the code.
-     * @return The preprocessed Python code ready for execution.
+     * Preprocesses Python code to ensure it can handle input correctly.
+     * Checks for function definitions and adds a print statement to call the function with the input.
+     * @param code The original Python code
+     * @param input The input to be passed to the code
+     * @return The preprocessed Python code ready for execution
      */
     private String preprocessPythonCode(String code, String input) {
         // Check if code contains a function definition
@@ -181,11 +175,11 @@ public class PistonService {
     }
 
     /**
-     * This method preprocesses JavaScript code to ensure it can handle input correctly.
-     * It checks for function definitions and adds a console.log statement to call the function with the input.
-     * @param code The original JavaScript code.
-     * @param input The input to be passed to the code.
-     * @return The preprocessed JavaScript code ready for execution.
+     * Preprocesses JavaScript code to ensure it can handle input correctly.
+     * Checks for function definitions and adds a console.log statement to call the function with the input.
+     * @param code The original JavaScript code
+     * @param input The input to be passed to the code
+     * @return The preprocessed JavaScript code ready for execution
      */
     private String preprocessJavaScriptCode(String code, String input) {
         // Check if code contains a function definition
@@ -217,11 +211,11 @@ public class PistonService {
     }
 
     /**
-     * This method preprocesses Java code to ensure it can handle input correctly.
-     * It checks for the main method structure and adds a System.out.println statement to call the method with the input.
-     * @param code The original Java code.
-     * @param input The input to be passed to the code.
-     * @return The preprocessed Java code ready for execution.
+     * Preprocesses Java code to ensure it can handle input correctly.
+     * Checks for the main method structure and adds a System.out.println statement to call the method with the input.
+     * @param code The original Java code
+     * @param input The input to be passed to the code
+     * @return The preprocessed Java code ready for execution
      */
     private String preprocessJavaCode(String code, String input) {
         // For Java, we need to handle the main method structure
@@ -253,11 +247,11 @@ public class PistonService {
     }
 
     /**
-     * This method preprocesses C++ code to ensure it can handle input correctly.
-     * It checks for function definitions and adds a cout statement to call the function with the input.
-     * @param code The original C++ code.
-     * @param input The input to be passed to the code.
-     * @return The preprocessed C++ code ready for execution.
+     * Preprocesses C++ code to ensure it can handle input correctly.
+     * Checks for function definitions and adds a cout statement to call the function with the input.
+     * @param code The original C++ code
+     * @param input The input to be passed to the code
+     * @return The preprocessed C++ code ready for execution
      */
     private String preprocessCppCode(String code, String input) {
         if (code.contains("int ") && code.contains("(") && !code.contains("cout << ")) {
@@ -288,8 +282,8 @@ public class PistonService {
     }
 
     /**
-     * This class represents the response structure from the Piston API.
-     * It contains the run details including output, error messages, and exit code.
+     * Response structure from the Piston API.
+     * Contains the run details including output, error messages, and exit code.
      */
     @Data
     private static class PistonResponse {

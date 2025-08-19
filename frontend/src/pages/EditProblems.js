@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from '../api/axios';
+import HeaderBar from '../components/Dashboard/HeaderBar';
 import './EditProblems.css';
-import '../components/Dashboard/HeaderBar.css';
 
 function EditProblems() {
   const navigate = useNavigate();
@@ -104,27 +104,18 @@ function EditProblems() {
     navigate('/adminDashboard');
   };
 
+  const storedUser = localStorage.getItem('user');
+  const user = storedUser ? JSON.parse(storedUser) : null;
+
   if (loading) {
     return (
       <div className="edit-problems-root">
-        <div className="header-bar">
-          <div className="left">
-            <h1>BA</h1>
-          </div>
-          <div className="center">
-            <h2>Edit Problems</h2>
-          </div>
-          <div className="right">
-            <button className="logout-btn" onClick={handleBack}>
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M16 17L21 12L16 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M21 12H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-              <span>Back</span>
-            </button>
-          </div>
-        </div>
+        <HeaderBar 
+          user={user}
+          customTitle="Edit Problems"
+          customSubtitle="Modify existing coding challenges"
+          onBack={handleBack}
+        />
         <div className="loading-container">
           <div className="loading-spinner"></div>
           <p>Loading problems...</p>
@@ -135,24 +126,12 @@ function EditProblems() {
 
   return (
     <div className="edit-problems-root">
-      <div className="header-bar">
-        <div className="left">
-          <h1>BA</h1>
-        </div>
-        <div className="center">
-          <h2>Edit Problems</h2>
-        </div>
-        <div className="right">
-          <button className="logout-btn" onClick={handleBack}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M16 17L21 12L16 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M21 12H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <span>Back</span>
-          </button>
-        </div>
-      </div>
+      <HeaderBar 
+        user={user}
+        customTitle="Edit Problems"
+        customSubtitle="Modify existing coding challenges"
+        onBack={handleBack}
+      />
 
       <div className="edit-problems-content">
         <div className="filters-section">

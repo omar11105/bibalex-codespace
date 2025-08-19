@@ -12,7 +12,7 @@ function CodeEditor({ initialCode = '', language = 'javascript', onCodeChange })
     };
 
     const handleEditorDidMount = (editor, monaco) => {
-        // Monaco editor mounted successfully
+        // Editor mounted successfully
     };
 
     return (

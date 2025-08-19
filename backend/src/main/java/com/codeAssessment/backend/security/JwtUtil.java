@@ -14,9 +14,7 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
-    // This utility class handles JWT
 
-    // Value properties for JWT secret and expiration time
     @Value("${jwt.secret}")
     private String jwtSecret;
 
@@ -24,9 +22,8 @@ public class JwtUtil {
     private long jwtExpirationMs;
 
     /**
-     * This method generates a signing key from the JWT secret.
-     * It uses HMAC SHA-512 algorithm for signing the JWT tokens.
-     * @return Key used for signing JWT tokens.
+     * Generates a signing key from the JWT secret using HMAC SHA-512.
+     * @return Key used for signing JWT tokens
      */
     private Key getSigningKey() {
         byte[] keyBytes = jwtSecret.getBytes(StandardCharsets.UTF_8);
@@ -34,10 +31,10 @@ public class JwtUtil {
     }
 
     /**
-     * This method generates a JWT token for a given username and role.
-     * @param username The username for which the token is generated.
-     * @param role The role of the user (e.g., ADMIN, CANDIDATE).
-     * @return A signed JWT token.
+     * Generates a JWT token for the specified user with role claims.
+     * @param username The username for the token
+     * @param role The user's role (ADMIN, CANDIDATE)
+     * @return A signed JWT token
      */
     public String generateToken(String username, String role) {
         return Jwts.builder()
@@ -50,9 +47,9 @@ public class JwtUtil {
     }
 
     /**
-     * This method extracts the username from a JWT token.
-     * @param token The JWT token from which the username is extracted.
-     * @return The username contained in the JWT token.
+     * Extracts the username from a JWT token.
+     * @param token The JWT token to parse
+     * @return The username from the token
      */
     public String getUsernameFromToken(String token) {
         return Jwts.parserBuilder().setSigningKey(getSigningKey()).build()
@@ -61,9 +58,9 @@ public class JwtUtil {
     }
 
     /**
-     * This method extracts the role from a JWT token.
-     * @param token The JWT token from which the role is extracted.
-     * @return The role contained in the JWT token.
+     * Extracts the role from a JWT token.
+     * @param token The JWT token to parse
+     * @return The role from the token
      */
     public String getRoleFromToken(String token) {
         return (String) Jwts.parserBuilder().setSigningKey(getSigningKey()).build()
@@ -72,17 +69,16 @@ public class JwtUtil {
     }
 
     /**
-     * This method validates a JWT token.
-     * It checks if the token is correctly signed and not expired.
-     * @param token The JWT token to validate.
-     * @return true if the token is valid, false otherwise.
+     * Validates a JWT token by checking signature and expiration.
+     * @param token The JWT token to validate
+     * @return true if the token is valid, false otherwise
      */
     public boolean validateToken(String token) {
         try {
             Jwts.parserBuilder().setSigningKey(getSigningKey()).build().parseClaimsJws(token);
             return true;
         } catch (JwtException e) {
-            return false; // Token is invalid
+            return false;
         }
     }
 }
